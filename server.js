@@ -24,7 +24,6 @@ io.on('connection', socket => {
 
     socket.on('joinRoom', ({ username, room }) => {
         const user = userJoin(socket.id, username, room)
-        console.log(`new connection from ${user.username} to room ${user.room}`)
 
         socket.join(user.room)
 
@@ -42,6 +41,8 @@ io.on('connection', socket => {
             room: user.room,
             users: getRoomUsers(user.room)
         })
+        
+        console.log(`new connection from ${user.username} to room ${user.room}`)
     })
 
     // listen for chatMessage
