@@ -8,6 +8,9 @@
 
 > Simple realtime chat apps using socket.io
 
+## Try it
+[https://chatcord-apps.herokuapp.com](https://chatcord-apps.herokuapp.com)
+
 ## Install
 
 ```sh
