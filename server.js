@@ -18,10 +18,10 @@ const io = socket(server)
 const botName = 'ChatCord Bot'
 
 // set static folder
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+    res.send("haii")
 });
 
 // run when client connects
