@@ -21,10 +21,10 @@ app.use(express.static('public'))
 
 // run when client connects
 io.on('connection', socket => {
-    console.log("new connection...")
 
     socket.on('joinRoom', ({ username, room }) => {
         const user = userJoin(socket.id, username, room)
+        console.log(`new connection from ${user.username} to room ${user.room}`)
 
         socket.join(user.room)
 
