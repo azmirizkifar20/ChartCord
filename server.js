@@ -20,6 +20,10 @@ const botName = 'ChatCord Bot'
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+});
+
 // run when client connects
 io.on('connection', socket => {
     console.log("new connection...")
