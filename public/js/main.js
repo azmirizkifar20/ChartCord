@@ -19,7 +19,11 @@ socket.on('roomUsers', ({ room, users }) => {
 })
 
 socket.on('message', data => {
-    outputMessage(data)
+    if (data.username == username) {
+        outputMessage(data)
+    } else {
+        outputMessageFriend(data)
+    }
 
     console.log(data);
     // scroll down automatically
@@ -46,7 +50,21 @@ function outputMessage(data) {
     const div = document.createElement('div')
     div.classList.add('message')
     div.innerHTML = `
-        <p class="meta">${data.username} <span>${data.time}</span></p>
+        <p class="meta" style="text-align: right"><span style="font-size: 10pt">${data.time}</span> you</p>
+        <p class="text" style="text-align: right">
+            ${data.text}
+        </p>
+    `
+
+    // append div 
+    document.querySelector('.chat-messages').appendChild(div)
+}
+
+function outputMessageFriend(data) {
+    const div = document.createElement('div')
+    div.classList.add('message')
+    div.innerHTML = `
+        <p class="meta">${data.username} <span style="font-size: 10pt">${data.time}</span></p>
         <p class="text">
             ${data.text}
         </p>
